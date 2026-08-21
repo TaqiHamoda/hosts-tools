@@ -20,8 +20,6 @@
 ||www.excite.com^
 ||bing.com^
 ||www.bing.com^
-||google.com^
-||www.google.com^
 ||hotbot.com^
 ||www.hotbot.com^
 ||kagi.com^
