@@ -5,14 +5,14 @@
 # ==========================================
 # Add your blocklist URLs here. A mix of AdBlock and Hosts formats is supported.
 BLOCKLISTS=(
-    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/doh-vpn-proxy-bypass.txt",
-    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nosafesearch.txt",
-    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/dyndns.txt",
-    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/gambling.txt",
-    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nsfw.txt",
-    "https://raw.githubusercontent.com/newedgex/ani-manga-blocklist/refs/heads/main/refined-blacklist.txt",
-    "",
-    "",
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/doh-vpn-proxy-bypass.txt"
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nosafesearch.txt"
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/dyndns.txt"
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/gambling.txt"
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nsfw.txt"
+    "https://raw.githubusercontent.com/newedgex/ani-manga-blocklist/refs/heads/main/refined-blacklist.txt"
+    "https://raw.githubusercontent.com/TaqiHamoda/hosts-tools/refs/heads/main/blocklists/pc.txt"
+    "https://raw.githubusercontent.com/TaqiHamoda/hosts-tools/refs/heads/main/blocklists/searchengines.txt"
 )
 
 # Temporary file to build the new list before atomic replacement
