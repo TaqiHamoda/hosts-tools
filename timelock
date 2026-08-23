@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Configuration
+KEYFILE="/etc/timelock.key"
+COMMAND=$1
+PAYLOAD=$2
+
+# 1. Enforce Root Privileges
+if [ "$EUID" -ne 0 ]; then
+  echo "Error: This script must be run with sudo."
+  exit 1
+fi
+
+# 2. Device-Specific Key Generation (Runs once on first execution)
+if [ ! -f "$KEYFILE" ]; then
+  # Generate a 256-bit random key
+  dd if=/dev/urandom of="$KEYFILE" bs=32 count=1 2>/dev/null
+  # Lock it down so ONLY root can read it
+  chmod 400 "$KEYFILE"
+fi
+
+# 3. Command Handling
+case "$COMMAND" in
+  encrypt)
+    if [ -z "$PAYLOAD" ]; then
+        echo "Usage: sudo timelock encrypt 'your text here'"
+        exit 1
+    fi
+    # Encrypt via AES-256 using the root-only key file
+    echo "$PAYLOAD" | openssl enc -aes-256-cbc -pbkdf2 -pass file:"$KEYFILE" -base64
+    ;;
+
+  decrypt)
+    if [ -z "$PAYLOAD" ]; then
+        echo "Usage: sudo timelock decrypt_delayed 'encrypted_string'"
+        exit 1
+    fi
+    echo "Locking for 24 hours. Do not close this terminal..."
+    # 86400 seconds = 24 hours
+    sleep 86400
+
+    # Decrypt and output
+    echo "$PAYLOAD" | openssl enc -aes-256-cbc -pbkdf2 -d -pass file:"$KEYFILE" -base64 2>/dev/null
+
+    if [ $? -ne 0 ]; then
+        echo "Error: Decryption failed. Invalid payload or wrong device."
+    fi
+    ;;
+
+  *)
+    echo "Commands: encrypt, decrypt_delayed"
+    exit 1
+    ;;
+esac

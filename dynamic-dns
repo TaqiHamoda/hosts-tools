@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# ==========================================
+# CONFIGURATION
+# ==========================================
+# Add your blocklist URLs here. A mix of AdBlock and Hosts formats is supported.
+BLOCKLISTS=(
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/doh-vpn-proxy-bypass.txt",
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nosafesearch.txt",
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/dyndns.txt",
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/gambling.txt",
+    "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nsfw.txt",
+    "https://raw.githubusercontent.com/newedgex/ani-manga-blocklist/refs/heads/main/refined-blacklist.txt",
+    "",
+    "",
+)
+
+# Temporary file to build the new list before atomic replacement
+TEMP_HOSTS=$(mktemp)
+
+# Get the actual hostname of the machine to replace {pc-hostname}
+PC_HOSTNAME=$(hostname)
+
+# ==========================================
+# 1. WRITE REQUIRED HEADERS
+# ==========================================
+cat <<EOF > "$TEMP_HOSTS"
+127.0.0.1 localhost
+127.0.1.1 $PC_HOSTNAME
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+# ==========================================
+# DYNAMIC BLOCKLIST BEGINS
+# Generated on: $(date)
+# ==========================================
+EOF
+
+# ==========================================
+# 2. DOWNLOAD, PARSE, AND APPEND BLOCKLISTS
+# ==========================================
+# Fetch all URLs silently, concatenate them, and pipe into the parser
+curl -sL "${BLOCKLISTS[@]}" | \
+  # Remove Windows-style carriage returns
+  sed 's/\r//' | \
+  # Remove AdBlock exceptions (@@) and comments (! or #)
+  grep -v -E '^@@|^!|^#' | \
+  # Strip AdBlock syntax (||domain.com^)
+  sed -e 's/^||//' -e 's/\^.*$//' | \
+  # Strip standard hosts file IPs (0.0.0.0 or 127.0.0.1)
+  sed -E 's/^(127\.0\.0\.1|0\.0\.0\.0)[[:space:]]+//' | \
+  # Grab only the first column (removes inline comments)
+  awk '{print $1}' | \
+  # Strictly match domain name formats (drops HTML/errors if a download fails)
+  grep -E '^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' | \
+  # Drop localhost entries to prevent conflicts with headers
+  grep -v -i -E '^(localhost|broadcasthost|local|ip6-localhost|ip6-loopback)$' | \
+  # Sort alphabetically and remove all duplicates
+  sort -u | \
+  # Prepend 0.0.0.0 to format it as a valid hosts entry
+  awk '{print "0.0.0.0 " $1}' >> "$TEMP_HOSTS"
+
+
+# ==========================================
+# 3. APPLY THE NEW HOSTS FILE
+# ==========================================
+# Replace the system hosts file
+cat "$TEMP_HOSTS" > /etc/hosts
+
+# Clean up temp file
+rm -f "$TEMP_HOSTS"
+
+# Optional: Restart systemd-resolved to flush DNS cache immediately
+if systemctl is-active --quiet systemd-resolved; then
+    systemctl restart systemd-resolved
+fi
