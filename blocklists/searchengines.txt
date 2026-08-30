@@ -16,6 +16,17 @@ excite.com
 www.excite.com
 bing.com
 www.bing.com
+cn.bing.com
+ssl.bing.com
+bing.net
+s.bing.net
+api.bing.com
+th.bing.com
+c.bing.com
+bat.bing.com
+edgeservices.bing.com
+sydney.bing.com
+copilot.microsoft.com
 hotbot.com
 www.hotbot.com
 kagi.com
@@ -44,6 +55,8 @@ search.yahoo.com
 www.search.yahoo.com
 yandex.com
 www.yandex.com
+yandex.kz
+www.yandex.kz
 yep.com
 www.yep.com
 youdao.com
