@@ -123,3 +123,6 @@ yongzin.cn
 you.com
 youdao.com
 ziplocal.com
+
+zonatmo.org
+tumanga.org
