@@ -11,6 +11,7 @@ BLOCKLISTS=(
     "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/gambling.txt"
     "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/nsfw.txt"
     "https://raw.githubusercontent.com/newedgex/ani-manga-blocklist/refs/heads/main/refined-blacklist.txt"
+    "https://raw.githubusercontent.com/TaqiHamoda/hosts-tools/refs/heads/main/blocklists/all.txt"
     "https://raw.githubusercontent.com/TaqiHamoda/hosts-tools/refs/heads/main/blocklists/pc.txt"
     "https://raw.githubusercontent.com/TaqiHamoda/hosts-tools/refs/heads/main/blocklists/searchengines.txt"
 )
