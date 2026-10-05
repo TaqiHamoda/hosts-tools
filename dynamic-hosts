@@ -46,7 +46,10 @@ EOF
 # 2. DOWNLOAD, PARSE, AND APPEND BLOCKLISTS
 # ==========================================
 # Fetch all URLs silently, concatenate them, and pipe into the parser
-curl -sL "${BLOCKLISTS[@]}" | \
+for url in "${BLOCKLISTS[@]}"; do
+    curl -sL "$url"
+    echo "" # Forces a newline so lists don't merge
+done | \
   # Remove Windows-style carriage returns
   sed 's/\r//' | \
   # Remove AdBlock exceptions (@@) and comments (! or #)
