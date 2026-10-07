@@ -1,56 +1,55 @@
-accoona.com
-brave.com
-coccoc.com
-duckduckgo.com
-fireball.com
-fireball.de
-kagi.com
-karmasearch.org
-lycos.com
-opensearch.org
-sapo.pt
-search.ch
-search.yahoo.com
-searx.space
-searxng.org
-sevasearch.org
-sogou.com
-swisscows.com
-www.ask.com
-www.baidu.com
-www.biglobe.ne.jp
-www.daum.net
-www.dogpile.com
-www.ecosia.org
-www.egerin.com
-www.elastic.co
-www.gigablastsearchengine.com
-www.metacrawler.com
-www.mojeek.com
-www.najdi.si
-www.nate.com
-www.naver.com
-www.qwant.com
-www.rambler.ru
-www.rediff.com
-www.seznam.cz
-www.so.com
-www.startpage.com
-www.webcrawler.com
-www.yahoo.co.jp
-yacy.net
-yandex.com
-yandex.kz
-yep.com
-you.com
-youdao.com
-ziplocal.com
+0.0.0.0 accoona.com
+0.0.0.0 brave.com
+0.0.0.0 coccoc.com
+0.0.0.0 duckduckgo.com
+0.0.0.0 fireball.com
+0.0.0.0 fireball.de
+0.0.0.0 kagi.com
+0.0.0.0 karmasearch.org
+0.0.0.0 lycos.com
+0.0.0.0 opensearch.org
+0.0.0.0 sapo.pt
+0.0.0.0 search.ch
+0.0.0.0 search.yahoo.com
+0.0.0.0 searx.space
+0.0.0.0 searxng.org
+0.0.0.0 sevasearch.org
+0.0.0.0 sogou.com
+0.0.0.0 swisscows.com
+0.0.0.0 www.ask.com
+0.0.0.0 www.baidu.com
+0.0.0.0 www.biglobe.ne.jp
+0.0.0.0 www.daum.net
+0.0.0.0 www.dogpile.com
+0.0.0.0 www.ecosia.org
+0.0.0.0 www.egerin.com
+0.0.0.0 www.elastic.co
+0.0.0.0 www.gigablastsearchengine.com
+0.0.0.0 www.metacrawler.com
+0.0.0.0 www.mojeek.com
+0.0.0.0 www.najdi.si
+0.0.0.0 www.nate.com
+0.0.0.0 www.naver.com
+0.0.0.0 www.qwant.com
+0.0.0.0 www.rambler.ru
+0.0.0.0 www.rediff.com
+0.0.0.0 www.seznam.cz
+0.0.0.0 www.so.com
+0.0.0.0 www.startpage.com
+0.0.0.0 www.webcrawler.com
+0.0.0.0 www.yahoo.co.jp
+0.0.0.0 yacy.net
+0.0.0.0 yandex.com
+0.0.0.0 yandex.kz
+0.0.0.0 yep.com
+0.0.0.0 you.com
+0.0.0.0 youdao.com
+0.0.0.0 ziplocal.com
 
-
-bing.com
-www.bing.com
-www.msn.com
-th.bing.com
-r.bing.com
-img-s-msn-com.akamaized.net
-assets.msn.com
+0.0.0.0 bing.com
+0.0.0.0 www.bing.com
+0.0.0.0 www.msn.com
+0.0.0.0 th.bing.com
+0.0.0.0 r.bing.com
+0.0.0.0 img-s-msn-com.akamaized.net
+0.0.0.0 assets.msn.com
