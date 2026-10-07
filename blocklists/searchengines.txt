@@ -52,7 +52,5 @@ www.bing.com
 www.msn.com
 th.bing.com
 r.bing.com
-login.microsoftonline.com
-login.live.com
 img-s-msn-com.akamaized.net
 assets.msn.com
